@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">DendroData</string>
+    <string name="nome">Nome</string>
+    <string name="telFixo">Telefone</string>
+    <string name="especie">Espécie</string>
+    <string name="salvar">Salvar</string>
+    <string name="remover">Remover</string>
+    <string name="editar">Editar</string>
+    <string name="salvar_projeto">Salvar Projeto</string>
+    <string name="sobre_texto">Trabalho de Conclusão de Curso apresentada ao curso de MBA em Manejo Florestal de Precisão, do Programa de Educação Continuada em Ciências Agrárias, Universidade Federal do Paraná, como requisito parcial à obtenção do título de Especialista em Manejo Florestal de Precisão.</string>
+    <string name="orientador">Orientador: Prof. Dr. Jaime Wojciechowski</string>
+    <string name="coorientador">Coorientador: Prof. Dr. Razer Anthom N. R. Montaño</string>
+    <string-array name="especies_array">
+        <item>Eucalyptus spp</item>
+        <item>Pinus spp</item>
+        <item>Teca spp</item>
+        <item>Outro</item>
+    </string-array>
+    <string name="spinnertitle">Espécie</string>
+</resources>

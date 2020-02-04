@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.activity.projeto.FormularioProjetoActivity">
+
+        <TextView
+            android:id="@+id/activity_formularioprojeto_text_dadosprojetos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="DADOS DO PROJETO"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/activity_formularioprojeto_codigo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Código do Projeto"
+            android:importantForAutofill="no"
+            android:inputType="textCapWords"
+            app:layout_constraintEnd_toEndOf="@+id/activity_formularioprojeto_text_dadosprojetos"
+            app:layout_constraintStart_toStartOf="@+id/activity_formularioprojeto_text_dadosprojetos"
+            app:layout_constraintTop_toBottomOf="@id/activity_formularioprojeto_text_dadosprojetos"
+            tools:targetApi="o" />
+
+        <EditText
+            android:id="@+id/activity_formularioprojeto_fazenda"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
+            android:hint="Fazenda"
+            android:inputType="textCapWords"
+            app:layout_constraintStart_toStartOf="@+id/activity_formularioprojeto_codigo"
+            app:layout_constraintTop_toBottomOf="@+id/activity_formularioprojeto_codigo" />
+
+        <EditText
+            android:id="@+id/activity_formularioprojeto_municipio"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
+            android:hint="Município"
+            android:inputType="textCapWords"
+            app:layout_constraintEnd_toEndOf="@+id/activity_formularioprojeto_codigo"
+            app:layout_constraintTop_toBottomOf="@+id/activity_formularioprojeto_codigo" />
+
+        <EditText
+            android:id="@+id/activity_formularioprojeto_area"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
+            android:hint="Área Total"
+            android:inputType="numberDecimal"
+            app:layout_constraintStart_toStartOf="@+id/activity_formularioprojeto_fazenda"
+            app:layout_constraintTop_toBottomOf="@+id/activity_formularioprojeto_fazenda" />
+
+        <EditText
+            android:id="@+id/activity_formularioprojeto_especie"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
+            android:hint="Espécie"
+            android:inputType="textCapWords"
+            app:layout_constraintEnd_toEndOf="@+id/activity_formularioprojeto_municipio"
+            app:layout_constraintTop_toBottomOf="@+id/activity_formularioprojeto_municipio" />
+
+        <TextView
+            android:id="@+id/activity_formularioprojeto_text_unidadesamostrais"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="UNIDADES AMOSTRAIS"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/activity_formularioprojeto_especie"
+            app:layout_constraintStart_toStartOf="@+id/activity_formularioprojeto_area"
+            app:layout_constraintTop_toBottomOf="@+id/activity_formularioprojeto_area" />
+
+        <EditText
+            android:id="@+id/activity_formularioprojeto_tamanho_amostra"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
+            android:hint="Tamanho"
+            android:inputType="numberDecimal"
+            app:layout_constraintStart_toStartOf="@+id/activity_formularioprojeto_text_unidadesamostrais"
+            app:layout_constraintTop_toBottomOf="@+id/activity_formularioprojeto_text_unidadesamostrais" />
+
+        <EditText
+            android:id="@+id/activity_formularioprojeto_quantidade_amostras"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:hint="Quantidade"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_formularioprojeto_tamanho_amostra"
+            app:layout_constraintEnd_toEndOf="@+id/activity_formularioprojeto_text_unidadesamostrais" />
+
+        <EditText
+            android:id="@+id/activity_formularioprojeto_descricao_amostra"
+            android:layout_width="0dp"
+            android:layout_height="135dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Descrição"
+            android:inputType="textCapSentences"
+            android:textAlignment="viewStart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/activity_formularioprojeto_tamanho_amostra"
+            app:layout_constraintTop_toBottomOf="@+id/activity_formularioprojeto_tamanho_amostra" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
