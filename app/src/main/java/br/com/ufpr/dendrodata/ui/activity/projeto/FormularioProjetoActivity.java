@@ -10,7 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import br.com.ufpr.dendrodata.R;
-import br.com.ufpr.dendrodata.dao.ProjetoDAO;
+import br.com.ufpr.dendrodata.database.DendroDataDatabase;
+import br.com.ufpr.dendrodata.database.dao.ProjetoDAO;
 import br.com.ufpr.dendrodata.model.Projeto;
 
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_PROJETO;
@@ -30,13 +31,15 @@ public class FormularioProjetoActivity extends AppCompatActivity {
     private EditText campoQuantidade;
     private EditText campoDescricao;
 
-    private final ProjetoDAO dao = new ProjetoDAO();
+    private ProjetoDAO dao;
     private Projeto projeto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario_projeto);
+        DendroDataDatabase database = DendroDataDatabase.getInstance(this);
+        dao = database.getRoomProjetoDAO();
         inicializacaoCampos();
         carregaProjeto();
     }
@@ -56,6 +59,7 @@ public class FormularioProjetoActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 
     private void carregaProjeto() {
         Intent dados = getIntent();

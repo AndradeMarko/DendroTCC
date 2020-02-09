@@ -1,11 +1,13 @@
 package br.com.ufpr.dendrodata.model;
 
+import android.os.Parcel;
+
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 @Entity
 public class Projeto implements Serializable {
@@ -20,21 +22,15 @@ public class Projeto implements Serializable {
     private String tamanho;
     private String quantidade;
     private String descricao;
+    private Calendar dataCadastro = Calendar.getInstance();
 
-    @Ignore
-    public Projeto(String codigo, String fazenda, String municipio, String especie, String area, String tamanho, String quantidade, String descricao) {
-        this.codigo = codigo;
-        this.fazenda = fazenda;
-        this.municipio = municipio;
-        this.especie = especie;
-        this.area = area;
-        this.tamanho = tamanho;
-        this.quantidade = quantidade;
-        this.descricao = descricao;
+
+    public Calendar getDataCadastro() {
+        return dataCadastro;
     }
 
-    public Projeto() {
-
+    public void setDataCadastro(Calendar dataCadastro) {
+        this.dataCadastro = dataCadastro;
     }
 
     public String getFazenda() {
@@ -118,4 +114,9 @@ public class Projeto implements Serializable {
     public String toString() {
         return codigo;
     }
+
+//    public String dataFormatada() {
+//        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+//        return formatador.format(dataCadastro.getTime());
+//    }
 }

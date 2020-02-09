@@ -14,14 +14,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 
 import br.com.ufpr.dendrodata.R;
-import br.com.ufpr.dendrodata.dao.AmostraDAO;
 import br.com.ufpr.dendrodata.model.Amostra;
 import br.com.ufpr.dendrodata.ui.activity.amostra.dialog.SalvaAmostraDialog;
 
 public class ListaAmostrasActivity extends AppCompatActivity {
 
     public static final String TITLE_APPBAR_AMOSTRAS = "Amostras Executadas do projeto: ";
-    private AmostraDAO dao = new AmostraDAO();
+//    private AmostraDAO dao = new AmostraDAO();
 
     private ArrayAdapter<Amostra> adapter;
 
@@ -31,29 +30,29 @@ public class ListaAmostrasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_amostras);
         setTitle(TITLE_APPBAR_AMOSTRAS);
-        configuraFABNovo();
+//        configuraFABNovo();
         configuraLista();
 
     }
 
-    private void configuraFABNovo() {
-        FloatingActionButton botaoNovaAmostra = findViewById(R.id.activity_listaAmostras_fab_novo);
-        botaoNovaAmostra.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                abreFormularioInsereAmostra();
-            }
-        });
-    }
+//    private void configuraFABNovo() {
+//        FloatingActionButton botaoNovaAmostra = findViewById(R.id.activity_listaAmostras_fab_novo);
+//        botaoNovaAmostra.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                abreFormularioInsereAmostra();
+//            }
+//        });
+//    }
 
-    private void abreFormularioInsereAmostra() {
-        new SalvaAmostraDialog(this, this::salva).mostra();
-    }
+//    private void abreFormularioInsereAmostra() {
+//        new SalvaAmostraDialog(this, this::salva).mostra();
+//    }
 
-    private List<Amostra> salva(Amostra amostraCriada) {
-        dao.salva(amostraCriada);
-        return dao.todas();
-    }
+//    private List<Amostra> salva(Amostra amostraCriada) {
+//        dao.salva(amostraCriada);
+//        return dao.todas();
+//    }
 
     private void configuraLista() {
         ListView listaAmostras = findViewById(R.id.lista_amostras_recyclerview);
@@ -79,16 +78,16 @@ public class ListaAmostrasActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        atualizaAmostras();
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        atualizaAmostras();
+//    }
 
-    private void atualizaAmostras() {
-        adapter.clear();
-        adapter.addAll(dao.todas());
-    }
+//    private void atualizaAmostras() {
+//        adapter.clear();
+//        adapter.addAll(dao.todas());
+//    }
 
 
 }
