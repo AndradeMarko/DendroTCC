@@ -54,8 +54,7 @@ public class ListaProjetosActivity extends AppCompatActivity {
 
     private void configuraListenerClickItem(ListView listaProjetos) {
         listaProjetos.setOnItemClickListener((adapterView, view, posicao, id) -> {
-            Projeto projetoEscolhido = (Projeto) adapterView.getItemAtPosition(posicao);
-            abreFormularioEditaProjeto(projetoEscolhido);
+            listaProjetosView.carrega(posicao);
         });
     }
 
@@ -75,12 +74,6 @@ public class ListaProjetosActivity extends AppCompatActivity {
                 inflate(R.menu.activity_listaprojetos_menu, menu);
     }
 
-    private void abreFormularioEditaProjeto(Projeto projeto) {
-        Intent vaiParaFormularioActivity = new Intent(ListaProjetosActivity.this, FormularioProjetoActivity.class);
-        vaiParaFormularioActivity.putExtra(KEY_PROJETO, projeto);
-        startActivity(vaiParaFormularioActivity);
-    }
-
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -88,9 +81,9 @@ public class ListaProjetosActivity extends AppCompatActivity {
                 listaProjetosView.confirmaRemocao(item);
                 break;
             case R.id.activity_listaprojetos_menu_editar:
-                Intent vaiParaFormularioActivity = new Intent(ListaProjetosActivity.this, FormularioProjetoActivity.class);
-                startActivity(vaiParaFormularioActivity);
-//                listaProjetosView.carrega(item);
+                AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+                listaProjetosView.carrega(menuInfo.position);
                 break;
             default:
                 super.onContextItemSelected(item);

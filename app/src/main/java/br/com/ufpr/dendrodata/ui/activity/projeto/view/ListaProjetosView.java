@@ -18,7 +18,7 @@ import br.com.ufpr.dendrodata.ui.activity.projeto.adapter.ListaProjetosAdapter;
 
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_PROJETO;
 
-public class ListaProjetosView extends AppCompatActivity {
+public class ListaProjetosView {
 
     private final ListaProjetosAdapter adapter;
     private final ProjetoDAO dao;
@@ -45,26 +45,21 @@ public class ListaProjetosView extends AppCompatActivity {
                 .show();
     }
 
-    public void carrega(MenuItem item) {
-        Intent vaiParaFormularioActivity = new Intent(context, FormularioProjetoActivity.class);
-        startActivity(vaiParaFormularioActivity);
-
-//        AdapterView.AdapterContextMenuInfo menuInfo =
-//                (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-//        Projeto projetoEscolhido = adapter.getItem(menuInfo.position);
-//        abreFormularioEditaProjeto(projetoEscolhido);
+    public void carrega(int index) {
+        Projeto projetoEscolhido = adapter.getItem(index);
+        abreFormularioEditaProjeto(projetoEscolhido);
     }
 
     private void abreFormularioEditaProjeto(Projeto projeto) {
         Intent vaiParaFormularioActivity = new Intent(context, FormularioProjetoActivity.class);
-//        vaiParaFormularioActivity.putExtra(KEY_PROJETO, projeto);
-        startActivity(vaiParaFormularioActivity);
+        vaiParaFormularioActivity.putExtra(KEY_PROJETO, projeto);
+        context.startActivity(vaiParaFormularioActivity);
     }
 
     private void configuraListenerClickItem(ListView listaProjetos) {
         listaProjetos.setOnItemClickListener((adapterView, view, posicao, id) -> {
             Projeto projetoEscolhido = (Projeto) adapterView.getItemAtPosition(posicao);
-            abreFormularioEditaProjeto(projetoEscolhido);
+            abreFormularioEditaProjeto(projetoEscolhido); // esse this foi soh pra compilar msm
         });
     }
 
@@ -80,5 +75,4 @@ public class ListaProjetosView extends AppCompatActivity {
     public void atualizaProjetos() {
         adapter.atualiza(dao.todos());
     }
-
 }
