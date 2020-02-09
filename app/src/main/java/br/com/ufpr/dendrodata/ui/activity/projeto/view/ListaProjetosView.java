@@ -13,6 +13,7 @@ import br.com.ufpr.dendrodata.database.DendroDataDatabase;
 import br.com.ufpr.dendrodata.database.dao.ProjetoDAO;
 import br.com.ufpr.dendrodata.model.Projeto;
 import br.com.ufpr.dendrodata.ui.activity.projeto.FormularioProjetoActivity;
+import br.com.ufpr.dendrodata.ui.activity.projeto.ListaProjetosActivity;
 import br.com.ufpr.dendrodata.ui.activity.projeto.adapter.ListaProjetosAdapter;
 
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_PROJETO;
@@ -45,15 +46,18 @@ public class ListaProjetosView extends AppCompatActivity {
     }
 
     public void carrega(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo menuInfo =
-                (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        Projeto projetoEscolhido = adapter.getItem(menuInfo.position);
-        abreFormularioEditaProjeto(projetoEscolhido);
+        Intent vaiParaFormularioActivity = new Intent(context, FormularioProjetoActivity.class);
+        startActivity(vaiParaFormularioActivity);
+
+//        AdapterView.AdapterContextMenuInfo menuInfo =
+//                (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+//        Projeto projetoEscolhido = adapter.getItem(menuInfo.position);
+//        abreFormularioEditaProjeto(projetoEscolhido);
     }
 
     private void abreFormularioEditaProjeto(Projeto projeto) {
-        Intent vaiParaFormularioActivity = new Intent(getApplicationContext(), FormularioProjetoActivity.class);
-        vaiParaFormularioActivity.putExtra(KEY_PROJETO, projeto);
+        Intent vaiParaFormularioActivity = new Intent(context, FormularioProjetoActivity.class);
+//        vaiParaFormularioActivity.putExtra(KEY_PROJETO, projeto);
         startActivity(vaiParaFormularioActivity);
     }
 

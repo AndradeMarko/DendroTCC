@@ -86,13 +86,16 @@ public class ListaProjetosActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.activity_listaprojetos_menu_remover:
                 listaProjetosView.confirmaRemocao(item);
-                return true;
+                break;
             case R.id.activity_listaprojetos_menu_editar:
-                listaProjetosView.carrega(item);
-                return true;
+                Intent vaiParaFormularioActivity = new Intent(ListaProjetosActivity.this, FormularioProjetoActivity.class);
+                startActivity(vaiParaFormularioActivity);
+//                listaProjetosView.carrega(item);
+                break;
             default:
-                return super.onContextItemSelected(item);
+                super.onContextItemSelected(item);
         }
+        return true;
     }
 
 
