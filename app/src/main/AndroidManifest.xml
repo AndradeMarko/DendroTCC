@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
+        <activity android:name=".ui.activity.amostra.FormularioAmostraActivity"></activity>
         <activity android:name=".ui.activity.individuo.ListaIndividuoActivity" />
         <activity android:name=".ui.activity.amostra.ListaAmostrasActivity" />
         <activity android:name=".ui.activity.projeto.ListaProjetosActivity" />
-
         <activity android:name=".ui.activity.projeto.FormularioProjetoActivity" />
         <activity android:name=".ui.activity.main.SobreActivity" />
         <activity android:name=".ui.activity.main.ExportarActivity" />

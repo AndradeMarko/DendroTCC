@@ -45,11 +45,6 @@ public class ListaProjetosAdapter extends BaseAdapter {
         return viewCriada;
     }
 
-    public void remove(Projeto projeto) {
-        projetos.remove(projeto);
-        notifyDataSetChanged();
-    }
-
     private View criaView(ViewGroup viewGroup) {
         return LayoutInflater
                 .from(context)
@@ -65,6 +60,11 @@ public class ListaProjetosAdapter extends BaseAdapter {
         municipio.setText(projeto.getMunicipio());
         TextView quantidade = view.findViewById(R.id.item_projeto_parcelas);
         quantidade.setText("123" + "/" + projeto.getQuantidade());
+    }
+
+    public void remove(Projeto projeto) {
+        projetos.remove(projeto);
+        notifyDataSetChanged();
     }
 
     public void atualiza(List<Projeto> projetos) {

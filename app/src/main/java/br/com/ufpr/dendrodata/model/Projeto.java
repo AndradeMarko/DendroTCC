@@ -8,6 +8,7 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 
 @Entity
 public class Projeto implements Serializable {
@@ -23,7 +24,6 @@ public class Projeto implements Serializable {
     private String quantidade;
     private String descricao;
     private Calendar dataCadastro = Calendar.getInstance();
-
 
     public Calendar getDataCadastro() {
         return dataCadastro;
@@ -115,8 +115,4 @@ public class Projeto implements Serializable {
         return codigo;
     }
 
-//    public String dataFormatada() {
-//        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-//        return formatador.format(dataCadastro.getTime());
-//    }
 }

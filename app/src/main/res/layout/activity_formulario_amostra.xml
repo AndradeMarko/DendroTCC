@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.activity.numero.FormularioAmostraActivity">
+
+        <TextView
+            android:id="@+id/activity_formularioamostra_text_dadosamostra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="DADOS DA AMOSTRA"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/activity_formularioamostra_numero"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_action_amostra"
+            android:drawablePadding="8dp"
+            android:hint="Número da Amostra"
+            android:importantForAutofill="no"
+            android:inputType="textCapWords"
+            app:layout_constraintEnd_toEndOf="@+id/activity_formularioamostra_text_dadosamostra"
+            app:layout_constraintStart_toStartOf="@+id/activity_formularioamostra_text_dadosamostra"
+            app:layout_constraintTop_toBottomOf="@id/activity_formularioamostra_text_dadosamostra"
+            tools:targetApi="o" />
+
+        <EditText
+            android:id="@+id/activity_formularioamostra_coordx"
+            android:layout_width="175dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_action_coordenada"
+            android:drawablePadding="8dp"
+            android:hint="Coordenada X"
+            android:inputType="textCapWords"
+            app:layout_constraintStart_toStartOf="@+id/activity_formularioamostra_numero"
+            app:layout_constraintTop_toBottomOf="@+id/activity_formularioamostra_numero" />
+
+        <EditText
+            android:id="@+id/activity_formularioamostra_coordy"
+            android:layout_width="175dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_action_coordenada"
+            android:drawablePadding="8dp"
+            android:hint="Coordenada Y"
+            android:inputType="textCapWords"
+            app:layout_constraintEnd_toEndOf="@+id/activity_formularioamostra_numero"
+            app:layout_constraintTop_toBottomOf="@+id/activity_formularioamostra_numero" />
+
+        <EditText
+            android:id="@+id/activity_formularioamostra_espacamento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_action_espacamento"
+            android:drawablePadding="8dp"
+            android:hint="Espaçamento"
+            android:inputType="numberDecimal"
+            app:layout_constraintEnd_toEndOf="@+id/activity_formularioamostra_coordy"
+            app:layout_constraintStart_toStartOf="@+id/activity_formularioamostra_coordx"
+            app:layout_constraintTop_toBottomOf="@+id/activity_formularioamostra_coordx" />
+
+
+        <EditText
+            android:id="@+id/activity_formularioamostra_observacoes"
+            android:layout_width="0dp"
+            android:layout_height="135dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:drawableStart="@drawable/ic_action_observacoes"
+            android:drawablePadding="8dp"
+            android:hint="Observações"
+            android:inputType="textCapSentences"
+            android:textAlignment="viewStart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/activity_formularioamostra_espacamento"
+            app:layout_constraintTop_toBottomOf="@+id/activity_formularioamostra_espacamento" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

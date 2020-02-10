@@ -2,48 +2,74 @@ package br.com.ufpr.dendrodata.model;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
-import androidx.room.Ignore;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import static androidx.room.ForeignKey.CASCADE;
 
 @Entity
 public class Amostra implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
-    private long id = 0;
-    private String parcela;
+    private int id = 0;
+    private String numero;
     private String coordX;
     private String coordY;
+    private String espacamento;
     private String observacao;
-
-    @Ignore
-    public Amostra(long id, String parcela, String coordX, String coordY, String observacao) {
-        this.id = id;
-        this.parcela = parcela;
-        this.coordX = coordX;
-        this.coordY = coordY;
-        this.observacao = observacao;
-    }
+    private Calendar dataCadastro = Calendar.getInstance();
+    @ForeignKey(entity = Projeto.class,
+            parentColumns = "id",
+            childColumns = "projetoId",
+            onUpdate = CASCADE,
+            onDelete = CASCADE)
+    private int projetoId;
 
     public Amostra() {
-
     }
 
-    public void setId(long id) {
+    public int getProjetoId() {
+        return projetoId;
+    }
+
+    public String getEspacamento() {
+        return espacamento;
+    }
+
+    public void setEspacamento(String espacamento) {
+        this.espacamento = espacamento;
+    }
+
+    public void setProjetoId(int projetoId) {
+        this.projetoId = projetoId;
+    }
+
+    public Calendar getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(Calendar dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
+    public void setId(int id) {
         this.id = id;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public String getParcela() {
-        return parcela;
+    public String getNumero() {
+        return numero;
     }
 
-    public void setParcela(String parcela) {
-        this.parcela = parcela;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
     public String getCoordX() {
@@ -70,9 +96,18 @@ public class Amostra implements Serializable {
         this.observacao = observacao;
     }
 
+    public String dataFormatada() {
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+        return formatador.format(dataCadastro.getTime());
+    }
+
+    public boolean idValido() {
+        return id > 0;
+    }
+
     @NonNull
     @Override
     public String toString() {
-        return parcela;
+        return numero;
     }
 }

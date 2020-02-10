@@ -1,93 +1,89 @@
 package br.com.ufpr.dendrodata.ui.activity.amostra;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.List;
-
 import br.com.ufpr.dendrodata.R;
-import br.com.ufpr.dendrodata.model.Amostra;
-import br.com.ufpr.dendrodata.ui.activity.amostra.dialog.SalvaAmostraDialog;
+import br.com.ufpr.dendrodata.ui.activity.amostra.adapter.ListaAmostrasAdapter;
+import br.com.ufpr.dendrodata.ui.activity.amostra.view.ListaAmostrasView;
+
+import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_LISTAAMOSTRAS;
 
 public class ListaAmostrasActivity extends AppCompatActivity {
 
-    public static final String TITLE_APPBAR_AMOSTRAS = "Amostras Executadas do projeto: ";
-//    private AmostraDAO dao = new AmostraDAO();
-
-    private ArrayAdapter<Amostra> adapter;
-
+    private ListaAmostrasView listaAmostrasView;
+    private ListaAmostrasAdapter adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_amostras);
-        setTitle(TITLE_APPBAR_AMOSTRAS);
-//        configuraFABNovo();
+        setTitle(TITLE_APPBAR_LISTAAMOSTRAS);
+        listaAmostrasView = new ListaAmostrasView(this);
+        configuraFABNovo();
         configuraLista();
-
     }
 
-//    private void configuraFABNovo() {
-//        FloatingActionButton botaoNovaAmostra = findViewById(R.id.activity_listaAmostras_fab_novo);
-//        botaoNovaAmostra.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                abreFormularioInsereAmostra();
-//            }
-//        });
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        listaAmostrasView.atualizaAmostra();
+    }
 
-//    private void abreFormularioInsereAmostra() {
-//        new SalvaAmostraDialog(this, this::salva).mostra();
-//    }
+    private void configuraFABNovo() {
+        FloatingActionButton botaoNovaAmostra = findViewById(R.id.activity_listaAmostras_fab_novo);
+        botaoNovaAmostra.setOnClickListener(view -> abreFormularioInsereAmostra());
+    }
 
-//    private List<Amostra> salva(Amostra amostraCriada) {
-//        dao.salva(amostraCriada);
-//        return dao.todas();
-//    }
+    private void abreFormularioInsereAmostra() {
+        startActivity(new Intent(this, FormularioAmostraActivity.class));
+    }
 
     private void configuraLista() {
-        ListView listaAmostras = findViewById(R.id.lista_amostras_recyclerview);
-        configuraAdapter(listaAmostras);
+        ListView listaAmostras = findViewById(R.id.activity_lista_amostras_listview);
+        listaAmostrasView.configuraAdapter(listaAmostras);
         configuraListenerClickItem(listaAmostras);
         registerForContextMenu(listaAmostras);
     }
 
-    private void configuraAdapter(ListView ListaAmostras) {
-        adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1);
-        ListaAmostras.setAdapter(adapter);
-    }
-
-    private void configuraListenerClickItem(ListView listaProjetos) {
-        listaProjetos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int posicao, long id) {
-                Amostra amostraSelecionada = (Amostra) adapterView.getItemAtPosition(posicao);
-                Toast.makeText(ListaAmostrasActivity.this, "Amostra Clicada para Trabalhar: " + amostraSelecionada.getParcela(), Toast.LENGTH_SHORT).show();
-            }
+    private void configuraListenerClickItem(ListView listaAmostras) {
+        listaAmostras.setOnItemClickListener((adapterView, view, posicao, id) -> {
+            startActivity(new Intent(this, FormularioAmostraActivity.class));
         });
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        atualizaAmostras();
-//    }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getMenuInflater().
+                inflate(R.menu.activity_listaamostra_menu, menu);
+    }
 
-//    private void atualizaAmostras() {
-//        adapter.clear();
-//        adapter.addAll(dao.todas());
-//    }
-
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.activity_listaamostras_menu_remover:
+                listaAmostrasView.confirmaRemocao(item);
+                break;
+            case R.id.activity_listaamostras_menu_editar:
+                AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+                listaAmostrasView.carrega(menuInfo.position);
+                break;
+            default:
+                super.onContextItemSelected(item);
+        }
+        return true;
+    }
 
 }

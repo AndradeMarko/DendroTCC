@@ -7,13 +7,10 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import br.com.ufpr.dendrodata.database.DendroDataDatabase;
 import br.com.ufpr.dendrodata.database.dao.ProjetoDAO;
 import br.com.ufpr.dendrodata.model.Projeto;
 import br.com.ufpr.dendrodata.ui.activity.projeto.FormularioProjetoActivity;
-import br.com.ufpr.dendrodata.ui.activity.projeto.ListaProjetosActivity;
 import br.com.ufpr.dendrodata.ui.activity.projeto.adapter.ListaProjetosAdapter;
 
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_PROJETO;
@@ -28,6 +25,14 @@ public class ListaProjetosView {
         this.context = context;
         this.adapter = new ListaProjetosAdapter(this.context);
         dao = DendroDataDatabase.getInstance(context).getRoomProjetoDAO();
+    }
+
+    public void configuraAdapter(ListView listaDeProjetos) {
+        listaDeProjetos.setAdapter(adapter);
+    }
+
+    public void atualizaProjetos() {
+        adapter.atualiza(dao.todos());
     }
 
     public void confirmaRemocao(final MenuItem item) {
@@ -56,23 +61,8 @@ public class ListaProjetosView {
         context.startActivity(vaiParaFormularioActivity);
     }
 
-    private void configuraListenerClickItem(ListView listaProjetos) {
-        listaProjetos.setOnItemClickListener((adapterView, view, posicao, id) -> {
-            Projeto projetoEscolhido = (Projeto) adapterView.getItemAtPosition(posicao);
-            abreFormularioEditaProjeto(projetoEscolhido); // esse this foi soh pra compilar msm
-        });
-    }
-
     private void remove(Projeto projeto) {
         dao.remove(projeto);
         adapter.remove(projeto);
-    }
-
-    public void configuraAdapter(ListView listaDeProjetos) {
-        listaDeProjetos.setAdapter(adapter);
-    }
-
-    public void atualizaProjetos() {
-        adapter.atualiza(dao.todos());
     }
 }

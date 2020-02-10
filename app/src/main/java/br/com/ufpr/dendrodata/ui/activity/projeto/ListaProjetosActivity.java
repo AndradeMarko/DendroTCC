@@ -7,7 +7,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,18 +15,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import br.com.ufpr.dendrodata.R;
-import br.com.ufpr.dendrodata.model.Projeto;
-import br.com.ufpr.dendrodata.ui.activity.individuo.ListaIndividuoActivity;
+import br.com.ufpr.dendrodata.ui.activity.amostra.ListaAmostrasActivity;
 import br.com.ufpr.dendrodata.ui.activity.projeto.adapter.ListaProjetosAdapter;
 import br.com.ufpr.dendrodata.ui.activity.projeto.view.ListaProjetosView;
 
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_PROJETO;
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_LISTAPROJETOS;
 
 public class ListaProjetosActivity extends AppCompatActivity {
 
     private ListaProjetosView listaProjetosView;
-    private ListaProjetosAdapter adapter;
+//    private ListaProjetosAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,7 +51,8 @@ public class ListaProjetosActivity extends AppCompatActivity {
 
     private void configuraListenerClickItem(ListView listaProjetos) {
         listaProjetos.setOnItemClickListener((adapterView, view, posicao, id) -> {
-            listaProjetosView.carrega(posicao);
+            startActivity(new Intent(this, ListaAmostrasActivity.class));
+//            listaProjetosView.carrega(posicao);
         });
     }
 
@@ -82,7 +80,6 @@ public class ListaProjetosActivity extends AppCompatActivity {
                 break;
             case R.id.activity_listaprojetos_menu_editar:
                 AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-
                 listaProjetosView.carrega(menuInfo.position);
                 break;
             default:
@@ -90,7 +87,4 @@ public class ListaProjetosActivity extends AppCompatActivity {
         }
         return true;
     }
-
-
-
 }

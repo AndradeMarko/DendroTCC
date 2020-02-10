@@ -54,7 +54,7 @@ public abstract class FormularioAmostraDialog {
                     EditText campoCoordX = getEditText(viewCriada, R.id.formulario_amostra_coord_x);
                     EditText campoCoordY = getEditText(viewCriada, R.id.formulario_amostra_coord_y);
                     EditText campoObservacao = getEditText(viewCriada, R.id.formulario_amostra_observacoes);
-                    criaProduto(campoParcela, campoCoordX, campoCoordY, campoObservacao);
+//                    criaProduto(campoParcela, campoCoordX, campoCoordY, campoObservacao);
                 })
                 .setNegativeButton(TITULO_BOTAO_NEGATIVO, null)
                 .show();
@@ -67,7 +67,7 @@ public abstract class FormularioAmostraDialog {
             campoId.setText(String.valueOf(amostra.getId()));
             campoId.setVisibility(View.VISIBLE);
             EditText campoParcela = getEditText(viewCriada, R.id.formulario_amostra_parcela);
-            campoParcela.setText(amostra.getParcela());
+            campoParcela.setText(amostra.getNumero());
             EditText campoCoordX = getEditText(viewCriada, R.id.formulario_amostra_coord_x);
             campoCoordX.setText(amostra.getCoordX());
             EditText campoCoordY = getEditText(viewCriada, R.id.formulario_amostra_coord_y);
@@ -77,15 +77,15 @@ public abstract class FormularioAmostraDialog {
         }
     }
 
-    private void criaProduto(EditText campoParcela, EditText campoCoordX, EditText campoCoordY, EditText campoObservacao) {
-        String parcela = campoParcela.getText().toString();
-        String coordX = campoCoordX.getText().toString();
-        String coordY = campoCoordY.getText().toString();
-        String observacao = campoObservacao.getText().toString();
-        long id = preencheId();
-        Amostra amostra = new Amostra(id, parcela, coordX, coordY, observacao);
-        listener.quandoConfirmado(amostra);
-    }
+//    private void criaProduto(EditText campoParcela, EditText campoCoordX, EditText campoCoordY, EditText campoObservacao) {
+//        String parcela = campoParcela.getText().toString();
+//        String coordX = campoCoordX.getText().toString();
+//        String coordY = campoCoordY.getText().toString();
+//        String observacao = campoObservacao.getText().toString();
+//        long id = preencheId();
+//        Amostra amostra = new Amostra(id, parcela, coordX, coordY, observacao);
+//        listener.quandoConfirmado(amostra);
+//    }
 
     private EditText getEditText(View viewCriada, int idTextInputLayout) {
         TextInputLayout textInputLayout = viewCriada.findViewById(idTextInputLayout);

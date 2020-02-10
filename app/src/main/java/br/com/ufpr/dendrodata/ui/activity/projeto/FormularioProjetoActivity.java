@@ -18,9 +18,7 @@ import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_EDITAPROJETO;
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_NOVOPROJETO;
 
-
 public class FormularioProjetoActivity extends AppCompatActivity {
-
 
     private EditText campoCodigo;
     private EditText campoFazenda;
@@ -44,7 +42,6 @@ public class FormularioProjetoActivity extends AppCompatActivity {
         carregaProjeto();
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_formularioprojeto_menu, menu);
@@ -59,7 +56,6 @@ public class FormularioProjetoActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     private void carregaProjeto() {
         Intent dados = getIntent();
