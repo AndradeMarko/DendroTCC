@@ -10,6 +10,7 @@ import android.widget.ListView;
 import br.com.ufpr.dendrodata.database.DendroDataDatabase;
 import br.com.ufpr.dendrodata.database.dao.ProjetoDAO;
 import br.com.ufpr.dendrodata.model.Projeto;
+import br.com.ufpr.dendrodata.ui.activity.amostra.ListaAmostrasActivity;
 import br.com.ufpr.dendrodata.ui.activity.projeto.FormularioProjetoActivity;
 import br.com.ufpr.dendrodata.ui.activity.projeto.adapter.ListaProjetosAdapter;
 
@@ -50,6 +51,11 @@ public class ListaProjetosView {
                 .show();
     }
 
+    private void remove(Projeto projeto) {
+        dao.remove(projeto);
+        adapter.remove(projeto);
+    }
+
     public void carrega(int index) {
         Projeto projetoEscolhido = adapter.getItem(index);
         abreFormularioEditaProjeto(projetoEscolhido);
@@ -61,8 +67,9 @@ public class ListaProjetosView {
         context.startActivity(vaiParaFormularioActivity);
     }
 
-    private void remove(Projeto projeto) {
-        dao.remove(projeto);
-        adapter.remove(projeto);
+    public void abreListaAmostras(Projeto projeto) {
+        Intent vaiParaListaAmostrasActivity = new Intent(context, ListaAmostrasActivity.class);
+        vaiParaListaAmostrasActivity.putExtra(KEY_PROJETO, projeto);
+        context.startActivity(vaiParaListaAmostrasActivity);
     }
 }

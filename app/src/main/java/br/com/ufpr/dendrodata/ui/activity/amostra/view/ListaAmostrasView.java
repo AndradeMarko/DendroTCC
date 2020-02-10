@@ -31,8 +31,8 @@ public class ListaAmostrasView {
         listaAmostras.setAdapter(adapter);
     }
 
-    public void atualizaAmostra() {
-        adapter.atualiza(dao.todas());
+    public void atualizaAmostra(int projetoId) {
+        adapter.atualiza(dao.todas(projetoId));
     }
 
     public void confirmaRemocao(final MenuItem item) {

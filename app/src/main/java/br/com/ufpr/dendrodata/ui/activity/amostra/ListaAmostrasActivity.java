@@ -15,15 +15,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import br.com.ufpr.dendrodata.R;
+import br.com.ufpr.dendrodata.model.Projeto;
 import br.com.ufpr.dendrodata.ui.activity.amostra.adapter.ListaAmostrasAdapter;
 import br.com.ufpr.dendrodata.ui.activity.amostra.view.ListaAmostrasView;
 
+import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_PROJETO;
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_LISTAAMOSTRAS;
 
 public class ListaAmostrasActivity extends AppCompatActivity {
 
     private ListaAmostrasView listaAmostrasView;
     private ListaAmostrasAdapter adapter;
+    private Projeto projeto;
+
+//    public ListaAmostrasActivity() {
+//        Intent dados = getIntent();
+//        projeto = (Projeto) dados.getSerializableExtra(KEY_PROJETO);
+//    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,8 +45,10 @@ public class ListaAmostrasActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+        Intent dados = getIntent();
+        projeto = (Projeto) dados.getSerializableExtra(KEY_PROJETO);
         super.onResume();
-        listaAmostrasView.atualizaAmostra();
+        listaAmostrasView.atualizaAmostra(projeto.getId());
     }
 
     private void configuraFABNovo() {
@@ -47,7 +57,11 @@ public class ListaAmostrasActivity extends AppCompatActivity {
     }
 
     private void abreFormularioInsereAmostra() {
-        startActivity(new Intent(this, FormularioAmostraActivity.class));
+        Intent vaiParaFormAmostra = new Intent(this, FormularioAmostraActivity.class);
+        vaiParaFormAmostra.putExtra(KEY_PROJETO, projeto);
+        startActivity(vaiParaFormAmostra);
+
+//        startActivity(new Intent(this, FormularioAmostraActivity.class));
     }
 
     private void configuraLista() {

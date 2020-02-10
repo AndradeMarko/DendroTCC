@@ -29,9 +29,6 @@ public class Amostra implements Serializable {
             onDelete = CASCADE)
     private int projetoId;
 
-    public Amostra() {
-    }
-
     public int getProjetoId() {
         return projetoId;
     }

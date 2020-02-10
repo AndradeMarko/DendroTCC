@@ -13,8 +13,10 @@ import br.com.ufpr.dendrodata.R;
 import br.com.ufpr.dendrodata.database.DendroDataDatabase;
 import br.com.ufpr.dendrodata.database.dao.AmostraDAO;
 import br.com.ufpr.dendrodata.model.Amostra;
+import br.com.ufpr.dendrodata.model.Projeto;
 
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_AMOSTRA;
+import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_PROJETO;
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_EDITAAMOSTRA;
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_NOVAAMOSTRA;
 
@@ -26,9 +28,11 @@ public class FormularioAmostraActivity extends AppCompatActivity {
     private EditText campoCoordY;
     private EditText campoEspacamento;
     private EditText campoObservacao;
+    private EditText campoProjetoId;
 
     private AmostraDAO dao;
     private Amostra amostra;
+    private Projeto projeto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,18 +65,36 @@ public class FormularioAmostraActivity extends AppCompatActivity {
             setTitle(TITLE_APPBAR_EDITAAMOSTRA);
             amostra = (Amostra) dados.getSerializableExtra(KEY_AMOSTRA);
             preencheCampos();
-        } else {
+        } else if (dados.hasExtra(KEY_PROJETO)) {
             setTitle(TITLE_APPBAR_NOVAAMOSTRA);
             amostra = new Amostra();
+            projeto = (Projeto) dados.getSerializableExtra(KEY_PROJETO);
         }
     }
 
     private void preencheCampos() {
+        campoProjetoId.setText(amostra.getProjetoId());
         campoNumero.setText(amostra.getNumero());
         campoCoordX.setText(amostra.getCoordX());
         campoCoordY.setText(amostra.getCoordY());
         campoEspacamento.setText(amostra.getEspacamento());
         campoObservacao.setText(amostra.getObservacao());
+    }
+
+    private void preencheAmostra() {
+
+        String numero = campoNumero.getText().toString();
+        String coordX = campoCoordX.getText().toString();
+        String coordY = campoCoordY.getText().toString();
+        String espacamento = campoEspacamento.getText().toString();
+        String observacao = campoObservacao.getText().toString();
+
+        amostra.setProjetoId(projeto.getId());
+        amostra.setNumero(numero);
+        amostra.setCoordX(coordX);
+        amostra.setCoordY(coordY);
+        amostra.setEspacamento(espacamento);
+        amostra.setObservacao(observacao);
     }
 
     private void finalizaFormulario() {
@@ -91,20 +113,5 @@ public class FormularioAmostraActivity extends AppCompatActivity {
         campoCoordY = findViewById(R.id.activity_formularioamostra_coordy);
         campoEspacamento = findViewById(R.id.activity_formularioamostra_espacamento);
         campoObservacao = findViewById(R.id.activity_formularioamostra_observacoes);
-    }
-
-    private void preencheAmostra() {
-
-        String numero = campoNumero.getText().toString();
-        String coordX = campoCoordX.getText().toString();
-        String coordY = campoCoordY.getText().toString();
-        String espacamento = campoEspacamento.getText().toString();
-        String observacao = campoObservacao.getText().toString();
-
-        amostra.setNumero(numero);
-        amostra.setCoordX(coordX);
-        amostra.setCoordY(coordY);
-        amostra.setEspacamento(espacamento);
-        amostra.setObservacao(observacao);
     }
 }

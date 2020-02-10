@@ -15,8 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import br.com.ufpr.dendrodata.R;
-import br.com.ufpr.dendrodata.ui.activity.amostra.ListaAmostrasActivity;
-import br.com.ufpr.dendrodata.ui.activity.projeto.adapter.ListaProjetosAdapter;
+import br.com.ufpr.dendrodata.model.Projeto;
 import br.com.ufpr.dendrodata.ui.activity.projeto.view.ListaProjetosView;
 
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_LISTAPROJETOS;
@@ -51,10 +50,11 @@ public class ListaProjetosActivity extends AppCompatActivity {
 
     private void configuraListenerClickItem(ListView listaProjetos) {
         listaProjetos.setOnItemClickListener((adapterView, view, posicao, id) -> {
-            startActivity(new Intent(this, ListaAmostrasActivity.class));
-//            listaProjetosView.carrega(posicao);
+            Projeto projetoEscolhido = (Projeto) adapterView.getItemAtPosition(posicao);
+            listaProjetosView.abreListaAmostras(projetoEscolhido);
         });
     }
+
 
     private void configuraFABNovo() {
         FloatingActionButton botaoNovoProjeto = findViewById(R.id.activity_listaProjetos_fab_novo);
