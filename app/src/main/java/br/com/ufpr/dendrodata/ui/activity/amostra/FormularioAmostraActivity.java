@@ -61,19 +61,20 @@ public class FormularioAmostraActivity extends AppCompatActivity {
 
     private void carregaAmostra() {
         Intent dados = getIntent();
-        if (dados.hasExtra(KEY_AMOSTRA)) {
-            setTitle(TITLE_APPBAR_EDITAAMOSTRA);
-            amostra = (Amostra) dados.getSerializableExtra(KEY_AMOSTRA);
-            preencheCampos();
-        } else if (dados.hasExtra(KEY_PROJETO)) {
+
+        amostra = (Amostra) dados.getSerializableExtra(KEY_AMOSTRA);
+
+        assert amostra != null;
+
+        if (amostra.getId() == 0) {
             setTitle(TITLE_APPBAR_NOVAAMOSTRA);
-            amostra = new Amostra();
-            projeto = (Projeto) dados.getSerializableExtra(KEY_PROJETO);
+        } else {
+            setTitle(TITLE_APPBAR_EDITAAMOSTRA);
+            preencheCampos();
         }
     }
 
     private void preencheCampos() {
-        campoProjetoId.setText(amostra.getProjetoId());
         campoNumero.setText(amostra.getNumero());
         campoCoordX.setText(amostra.getCoordX());
         campoCoordY.setText(amostra.getCoordY());
@@ -82,14 +83,12 @@ public class FormularioAmostraActivity extends AppCompatActivity {
     }
 
     private void preencheAmostra() {
-
         String numero = campoNumero.getText().toString();
         String coordX = campoCoordX.getText().toString();
         String coordY = campoCoordY.getText().toString();
         String espacamento = campoEspacamento.getText().toString();
         String observacao = campoObservacao.getText().toString();
 
-        amostra.setProjetoId(projeto.getId());
         amostra.setNumero(numero);
         amostra.setCoordX(coordX);
         amostra.setCoordY(coordY);

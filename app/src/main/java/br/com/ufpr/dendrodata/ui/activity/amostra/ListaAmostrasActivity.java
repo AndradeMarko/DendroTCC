@@ -15,10 +15,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import br.com.ufpr.dendrodata.R;
+import br.com.ufpr.dendrodata.model.Amostra;
 import br.com.ufpr.dendrodata.model.Projeto;
 import br.com.ufpr.dendrodata.ui.activity.amostra.adapter.ListaAmostrasAdapter;
 import br.com.ufpr.dendrodata.ui.activity.amostra.view.ListaAmostrasView;
 
+import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_AMOSTRA;
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_PROJETO;
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_LISTAAMOSTRAS;
 
@@ -58,10 +60,12 @@ public class ListaAmostrasActivity extends AppCompatActivity {
 
     private void abreFormularioInsereAmostra() {
         Intent vaiParaFormAmostra = new Intent(this, FormularioAmostraActivity.class);
-        vaiParaFormAmostra.putExtra(KEY_PROJETO, projeto);
-        startActivity(vaiParaFormAmostra);
 
-//        startActivity(new Intent(this, FormularioAmostraActivity.class));
+        Amostra amostra = new Amostra();
+        amostra.setProjetoId(projeto.getId());
+
+        vaiParaFormAmostra.putExtra(KEY_AMOSTRA, amostra);
+        startActivity(vaiParaFormAmostra);
     }
 
     private void configuraLista() {
@@ -71,9 +75,10 @@ public class ListaAmostrasActivity extends AppCompatActivity {
         registerForContextMenu(listaAmostras);
     }
 
+    /* Não sei pra q isso serve mas arrumei pq tava errado. Se tu fez o edit lá dentro da view, usa sempre lá. */
     private void configuraListenerClickItem(ListView listaAmostras) {
         listaAmostras.setOnItemClickListener((adapterView, view, posicao, id) -> {
-            startActivity(new Intent(this, FormularioAmostraActivity.class));
+            listaAmostrasView.carrega(posicao);
         });
     }
 
