@@ -13,10 +13,8 @@ import br.com.ufpr.dendrodata.R;
 import br.com.ufpr.dendrodata.database.DendroDataDatabase;
 import br.com.ufpr.dendrodata.database.dao.AmostraDAO;
 import br.com.ufpr.dendrodata.model.Amostra;
-import br.com.ufpr.dendrodata.model.Projeto;
 
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_AMOSTRA;
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_PROJETO;
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_EDITAAMOSTRA;
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_NOVAAMOSTRA;
 
@@ -28,11 +26,9 @@ public class FormularioAmostraActivity extends AppCompatActivity {
     private EditText campoCoordY;
     private EditText campoEspacamento;
     private EditText campoObservacao;
-    private EditText campoProjetoId;
 
     private AmostraDAO dao;
     private Amostra amostra;
-    private Projeto projeto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

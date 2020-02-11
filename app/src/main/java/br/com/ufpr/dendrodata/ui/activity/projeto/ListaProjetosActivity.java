@@ -55,7 +55,6 @@ public class ListaProjetosActivity extends AppCompatActivity {
         });
     }
 
-
     private void configuraFABNovo() {
         FloatingActionButton botaoNovoProjeto = findViewById(R.id.activity_listaProjetos_fab_novo);
         botaoNovoProjeto.setOnClickListener(view -> abreFormularioInsereProjeto());

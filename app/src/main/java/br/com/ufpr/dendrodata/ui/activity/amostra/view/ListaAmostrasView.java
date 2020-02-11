@@ -12,6 +12,7 @@ import br.com.ufpr.dendrodata.database.dao.AmostraDAO;
 import br.com.ufpr.dendrodata.model.Amostra;
 import br.com.ufpr.dendrodata.ui.activity.amostra.FormularioAmostraActivity;
 import br.com.ufpr.dendrodata.ui.activity.amostra.adapter.ListaAmostrasAdapter;
+import br.com.ufpr.dendrodata.ui.activity.individuo.ListaIndividuosActivity;
 
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_AMOSTRA;
 
@@ -64,5 +65,11 @@ public class ListaAmostrasView {
         Intent vaiParaFormularioActivity = new Intent(context, FormularioAmostraActivity.class);
         vaiParaFormularioActivity.putExtra(KEY_AMOSTRA, amostra);
         context.startActivity(vaiParaFormularioActivity);
+    }
+
+    public void abreListaIndividuos(Amostra amostra) {
+        Intent vaiParaListaIndividuosActivity = new Intent(context, ListaIndividuosActivity.class);
+        vaiParaListaIndividuosActivity.putExtra(KEY_AMOSTRA, amostra);
+        context.startActivity(vaiParaListaIndividuosActivity);
     }
 }

@@ -17,7 +17,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import br.com.ufpr.dendrodata.R;
 import br.com.ufpr.dendrodata.model.Amostra;
 import br.com.ufpr.dendrodata.model.Projeto;
-import br.com.ufpr.dendrodata.ui.activity.amostra.adapter.ListaAmostrasAdapter;
 import br.com.ufpr.dendrodata.ui.activity.amostra.view.ListaAmostrasView;
 
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_AMOSTRA;
@@ -27,13 +26,7 @@ import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities
 public class ListaAmostrasActivity extends AppCompatActivity {
 
     private ListaAmostrasView listaAmostrasView;
-    private ListaAmostrasAdapter adapter;
     private Projeto projeto;
-
-//    public ListaAmostrasActivity() {
-//        Intent dados = getIntent();
-//        projeto = (Projeto) dados.getSerializableExtra(KEY_PROJETO);
-//    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,10 +68,10 @@ public class ListaAmostrasActivity extends AppCompatActivity {
         registerForContextMenu(listaAmostras);
     }
 
-    /* Não sei pra q isso serve mas arrumei pq tava errado. Se tu fez o edit lá dentro da view, usa sempre lá. */
     private void configuraListenerClickItem(ListView listaAmostras) {
         listaAmostras.setOnItemClickListener((adapterView, view, posicao, id) -> {
-            listaAmostrasView.carrega(posicao);
+            Amostra amostraEscolhida = (Amostra) adapterView.getItemAtPosition(posicao);
+            listaAmostrasView.abreListaIndividuos(amostraEscolhida);
         });
     }
 
@@ -86,7 +79,7 @@ public class ListaAmostrasActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         getMenuInflater().
-                inflate(R.menu.activity_listaamostra_menu, menu);
+                inflate(R.menu.activity_listaamostras_menu, menu);
     }
 
     @Override

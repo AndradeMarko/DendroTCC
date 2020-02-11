@@ -5,14 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.activity.individuo.ListaIndividuoActivity">
+    tools:context=".ui.activity.individuo.ListaIndividuosActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/lista_individuos_recyclerview"
+    <ListView
+        android:id="@+id/activity_lista_individuos_listview"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layoutManager="StaggeredGridLayoutManager"
-        app:spanCount="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +18,7 @@
         tools:listitem="@layout/item_individuo" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/activity_listaindividuos_fab_novo"
+        android:id="@+id/activity_listaIndividuos_fab_novo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"

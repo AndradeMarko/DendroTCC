@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.individuo.FormularioIndividuoActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.activity.numero.FormularioAmostraActivity">
+
+        <TextView
+            android:id="@+id/activity_formularioindividuo_text_dadosindividuo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="DADOS DO INDIVÍDUO"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/activity_formularioindividuo_placa"
+            android:layout_width="175dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_action_amostra"
+            android:drawablePadding="8dp"
+            android:hint="Placa"
+            android:importantForAutofill="no"
+            android:inputType="textCapWords"
+            app:layout_constraintStart_toStartOf="@+id/activity_formularioindividuo_text_dadosindividuo"
+            app:layout_constraintTop_toBottomOf="@id/activity_formularioindividuo_text_dadosindividuo"
+            tools:targetApi="o" />
+
+        <EditText
+            android:id="@+id/activity_formularioindividuo_dap"
+            android:layout_width="175dp"
+            android:layout_height="45dp"
+            android:drawableStart="@drawable/ic_action_amostra"
+            android:drawablePadding="8dp"
+            android:hint="DAP"
+            android:importantForAutofill="no"
+            android:inputType="textCapWords"
+            app:layout_constraintEnd_toEndOf="@+id/activity_formularioindividuo_text_dadosindividuo"
+            app:layout_constraintTop_toTopOf="@+id/activity_formularioindividuo_placa"
+            tools:targetApi="o" />
+
+        <EditText
+            android:id="@+id/activity_formularioindividuo_hcomercial"
+            android:layout_width="175dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_action_coordenada"
+            android:drawablePadding="8dp"
+            android:hint="Altura Comercial"
+            android:inputType="textCapWords"
+            app:layout_constraintStart_toStartOf="@+id/activity_formularioindividuo_placa"
+            app:layout_constraintTop_toBottomOf="@+id/activity_formularioindividuo_placa" />
+
+        <EditText
+            android:id="@+id/activity_formularioindividuo_htotal"
+            android:layout_width="175dp"
+            android:layout_height="45dp"
+            android:drawableStart="@drawable/ic_action_coordenada"
+            android:drawablePadding="8dp"
+            android:hint="Altura Total"
+            android:inputType="textCapWords"
+            app:layout_constraintEnd_toEndOf="@+id/activity_formularioindividuo_dap"
+            app:layout_constraintTop_toTopOf="@+id/activity_formularioindividuo_hcomercial" />
+
+        <EditText
+            android:id="@+id/activity_formularioindividuo_sanidade"
+            android:layout_width="175dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_action_coordenada"
+            android:drawablePadding="8dp"
+            android:hint="Sanidade"
+            android:inputType="textCapWords"
+            app:layout_constraintStart_toStartOf="@+id/activity_formularioindividuo_hcomercial"
+            app:layout_constraintTop_toBottomOf="@+id/activity_formularioindividuo_hcomercial" />
+
+        <EditText
+            android:id="@+id/activity_formularioindividuo_qualidade"
+            android:layout_width="175dp"
+            android:layout_height="45dp"
+            android:drawableStart="@drawable/ic_action_coordenada"
+            android:drawablePadding="8dp"
+            android:hint="Qualidade Fuste"
+            android:inputType="textCapWords"
+            app:layout_constraintEnd_toEndOf="@+id/activity_formularioindividuo_htotal"
+            app:layout_constraintTop_toTopOf="@+id/activity_formularioindividuo_sanidade" />
+
+        <EditText
+            android:id="@+id/activity_formularioindividuo_observacoes"
+            android:layout_width="0dp"
+            android:layout_height="135dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:drawableStart="@drawable/ic_action_observacoes"
+            android:drawablePadding="8dp"
+            android:hint="Observações"
+            android:inputType="textCapSentences"
+            android:textAlignment="viewStart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/activity_formularioindividuo_sanidade"
+            app:layout_constraintTop_toBottomOf="@+id/activity_formularioindividuo_sanidade" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -14,14 +14,10 @@ import br.com.ufpr.dendrodata.model.Amostra;
 public interface AmostraDAO {
 
     @Insert
-
     void salva(Amostra amostra);
 
     @Query("SELECT a.* FROM Amostra a JOIN Projeto p ON a.projetoId = p.id WHERE a.projetoId = :projetoId")
     List<Amostra> todas(int projetoId);
-
-//    @Query("SELECT * FROM Amostra")
-//    List<Amostra> todas();
 
     @Delete
     void remove(Amostra amostra);
