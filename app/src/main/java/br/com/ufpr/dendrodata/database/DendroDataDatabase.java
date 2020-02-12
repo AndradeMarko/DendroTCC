@@ -20,13 +20,11 @@ import br.com.ufpr.dendrodata.model.Projeto;
 
 public abstract class DendroDataDatabase extends RoomDatabase {
 
-    private static final String NAME_BD = "dendrodata.db";
-
+    public static final String NAME_BD = "dendrodata.db";
 
     public abstract ProjetoDAO getRoomProjetoDAO();
     public abstract AmostraDAO getRoomAmostraDAO();
     public abstract IndividuoDAO getRoomIndividuoDAO();
-
 
     public static DendroDataDatabase getInstance(Context context) {
 
