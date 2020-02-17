@@ -19,6 +19,7 @@ public interface AmostraDAO {
     @Query("SELECT a.* FROM Amostra a JOIN Projeto p ON a.projetoId = p.id WHERE a.projetoId = :projetoId")
     List<Amostra> todas(int projetoId);
 
+
     @Delete
     void remove(Amostra amostra);
 

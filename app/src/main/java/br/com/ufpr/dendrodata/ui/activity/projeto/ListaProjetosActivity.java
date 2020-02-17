@@ -1,10 +1,8 @@
 package br.com.ufpr.dendrodata.ui.activity.projeto;
 
 import android.Manifest;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -12,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,18 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.List;
-
 import br.com.ufpr.dendrodata.R;
-import br.com.ufpr.dendrodata.database.DendroDataDatabase;
-import br.com.ufpr.dendrodata.database.csv.CSVWriter;
-import br.com.ufpr.dendrodata.database.dao.IndividuoDAO;
-import br.com.ufpr.dendrodata.model.Individuo;
 import br.com.ufpr.dendrodata.model.Projeto;
-import br.com.ufpr.dendrodata.ui.activity.projeto.adapter.ListaProjetosAdapter;
 import br.com.ufpr.dendrodata.ui.activity.projeto.view.ListaProjetosView;
 
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_LISTAPROJETOS;
@@ -50,11 +37,25 @@ public class ListaProjetosActivity extends AppCompatActivity {
         listaProjetosView = new ListaProjetosView(this);
         configuraFABNovo();
         configuraLista();
+
+        backButton();
+    }
+
+    private void backButton() {
+        assert getSupportActionBar() != null;   //null check
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
         listaProjetosView.atualizaProjetos();
     }
 
@@ -108,7 +109,6 @@ public class ListaProjetosActivity extends AppCompatActivity {
             case R.id.activity_listaprojetos_menu_exportar:
                 willAskForPermission();
                 listaProjetosView.exporta(menuInfo.position);
-//                new ExportDatabaseCSVTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                 break;
             case R.id.activity_listaprojetos_menu_remover:
                 listaProjetosView.confirmaRemocao(menuInfo.position);

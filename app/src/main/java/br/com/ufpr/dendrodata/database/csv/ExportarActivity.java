@@ -55,7 +55,7 @@ public class ExportarActivity extends AppCompatActivity {
         shareBtn = findViewById(R.id.shareBtn);
         shareBtn.setOnClickListener(view -> {
             willAskForPermission();
-            openFile(filename);
+            openFile();
         });
 
     }
@@ -133,13 +133,15 @@ public class ExportarActivity extends AppCompatActivity {
 //    }
 
 
-    public void openFile(final String filename) {
+    public void openFile() {
+
 //        Intent viewIntent = new Intent(Intent.ACTION_VIEW);
-//        Uri uri = Uri.fromFile(new File(getExternalFilesDir(filepath)+ "/" + filename));
-//        viewIntent.setDataAndType(uri, "text/plain");
-//        startActivity(viewIntent);
-//
 //        Intent sendIntent = new Intent(Intent.ACTION_SEND);
+//
+//        viewIntent.setDataAndType(FileProvider.getUriForFile(getContext(), "com.ufpr.dendrodata.projetos", target), "application/csv");
+//
+//        viewIntent.putExtra(Intent.EXTRA_TITLE, report.getSummary());
+//        viewIntent.putExtra(Intent.EXTRA_SUBJECT, report.getUrl());
 //
 //        sendIntent.setType("text/plain");
 //        sendIntent.putExtra(Intent.EXTRA_TEXT, report.getUrl());
@@ -150,9 +152,14 @@ public class ExportarActivity extends AppCompatActivity {
 //        chooser.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{sendIntent});
 //
 //        getContext().startActivity(chooser);
-//
-//    }
+
+        Intent viewIntent = new Intent(Intent.ACTION_VIEW);
+        viewIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+        Uri uri = Uri.fromFile(new File(getExternalFilesDir(filepath)+ "/" + filename));
+        viewIntent.setDataAndType(uri, "text/plain");
+        startActivity(viewIntent);
+    }
 
     }
-}
 

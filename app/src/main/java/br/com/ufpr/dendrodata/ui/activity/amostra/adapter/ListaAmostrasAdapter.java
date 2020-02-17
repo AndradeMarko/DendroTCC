@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.ufpr.dendrodata.R;
+import br.com.ufpr.dendrodata.database.DendroDataDatabase;
+import br.com.ufpr.dendrodata.database.dao.IndividuoDAO;
 import br.com.ufpr.dendrodata.model.Amostra;
 
 public class ListaAmostrasAdapter extends BaseAdapter {
@@ -52,11 +54,14 @@ public class ListaAmostrasAdapter extends BaseAdapter {
     }
 
     private void vincula(View view, Amostra amostra) {
+        IndividuoDAO individuoDAO = DendroDataDatabase.getInstance(context).getRoomIndividuoDAO();
         TextView numero = view.findViewById(R.id.item_amostra_numero);
         numero.setText("Parcela: F-" + amostra.getNumero());
         TextView data = view.findViewById(R.id.item_amostra_data);
         data.setText(amostra.dataFormatada());
-//        TextView individuos =
+        //Melhorar esta parte
+        TextView individuos = view.findViewById(R.id.item_amostra_individuos);
+        individuos.setText(individuoDAO.todos(amostra.getId()).size() + " Indivíduos.");
     }
 
     public void remove(Amostra amostra) {

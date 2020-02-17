@@ -38,6 +38,18 @@ public class FormularioAmostraActivity extends AppCompatActivity {
         dao = database.getRoomAmostraDAO();
         inicializacaoCampos();
         carregaAmostra();
+        backButton();
+    }
+
+    private void backButton() {
+        assert getSupportActionBar() != null;   //null check
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
     @Override
