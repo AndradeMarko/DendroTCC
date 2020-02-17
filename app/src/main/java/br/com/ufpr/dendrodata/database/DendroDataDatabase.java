@@ -15,7 +15,7 @@ import br.com.ufpr.dendrodata.model.Amostra;
 import br.com.ufpr.dendrodata.model.Individuo;
 import br.com.ufpr.dendrodata.model.Projeto;
 
-@Database(entities = {Projeto.class, Amostra.class, Individuo.class}, version = 6, exportSchema = false)
+@Database(entities = {Projeto.class, Amostra.class, Individuo.class}, version = 8, exportSchema = false)
 @TypeConverters({ConversorCalendar.class})
 
 public abstract class DendroDataDatabase extends RoomDatabase {
@@ -24,6 +24,7 @@ public abstract class DendroDataDatabase extends RoomDatabase {
 
     public abstract ProjetoDAO getRoomProjetoDAO();
     public abstract AmostraDAO getRoomAmostraDAO();
+
     public abstract IndividuoDAO getRoomIndividuoDAO();
 
     public static DendroDataDatabase getInstance(Context context) {

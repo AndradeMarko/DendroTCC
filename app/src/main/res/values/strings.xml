@@ -17,4 +17,5 @@
         <item>Outro</item>
     </string-array>
     <string name="spinnertitle">Espécie</string>
+    <string name="exportar">Exportar</string>
 </resources>

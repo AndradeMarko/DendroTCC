@@ -1,15 +1,29 @@
 package br.com.ufpr.dendrodata.model;
 
-import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 
 import static androidx.room.ForeignKey.CASCADE;
 
-@Entity
+@Entity(foreignKeys =
+        {@ForeignKey(entity = Amostra.class,
+                parentColumns = "id",
+                childColumns = "amostraId",
+                onDelete = CASCADE,
+                onUpdate = CASCADE),
+                @ForeignKey(entity = Projeto.class,
+                        parentColumns = "id",
+                        childColumns = "projetoId",
+                        onUpdate = CASCADE,
+                        onDelete = CASCADE)
+        }, indices = {@Index("amostraId"), @Index("projetoId")}
+)
 public class Individuo implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
@@ -22,11 +36,17 @@ public class Individuo implements Serializable {
     private String qualidade;
     private String observacao;
     @ForeignKey(entity = Amostra.class,
-    parentColumns = "id",
-    childColumns = "amostraId",
-    onUpdate = CASCADE,
-    onDelete = CASCADE)
+            parentColumns = "id",
+            childColumns = "amostraId",
+            onUpdate = CASCADE,
+            onDelete = CASCADE)
     private int amostraId;
+    @ForeignKey(entity = Projeto.class,
+            parentColumns = "id",
+            childColumns = "projetoId",
+            onUpdate = CASCADE,
+            onDelete = CASCADE)
+    private int projetoId;
 
     public int getId() {
         return id;
@@ -100,13 +120,29 @@ public class Individuo implements Serializable {
         this.amostraId = amostraId;
     }
 
+    public int getProjetoId() {
+        return projetoId;
+    }
+
+    public void setProjetoId(int projetoId) {
+        this.projetoId = projetoId;
+    }
+
     public boolean idValido() {
         return id > 0;
     }
+//    @NonNull
+//    @Override
+//    public String toString() {
+//        return placa;
 
-    @NonNull
+//    }
+
+
+    @NotNull
     @Override
     public String toString() {
-        return placa;
+        return id + " " + placa + " " + dap + " " + hcomercial + " " + htotal + " " + sanidade + " " + qualidade + " " + observacao + " " + amostraId;
     }
+
 }

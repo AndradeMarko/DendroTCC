@@ -55,6 +55,7 @@ public class ListaIndividuosActivity extends AppCompatActivity {
 
         Individuo individuo = new Individuo();
         individuo.setAmostraId(amostra.getId());
+        individuo.setProjetoId(amostra.getProjetoId());
 
         vaiParaFormIndividuo.putExtra(KEY_INDIVIDUO, individuo);
         startActivity(vaiParaFormIndividuo);

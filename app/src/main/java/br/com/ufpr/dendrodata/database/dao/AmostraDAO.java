@@ -24,4 +24,5 @@ public interface AmostraDAO {
 
     @Update
     void edita(Amostra amostra);
+
 }

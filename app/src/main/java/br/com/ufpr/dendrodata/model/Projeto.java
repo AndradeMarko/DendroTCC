@@ -1,14 +1,11 @@
 package br.com.ufpr.dendrodata.model;
 
-import android.os.Parcel;
-
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.List;
 
 @Entity
 public class Projeto implements Serializable {

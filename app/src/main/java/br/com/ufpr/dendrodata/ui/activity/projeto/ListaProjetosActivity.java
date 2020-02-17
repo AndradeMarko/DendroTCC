@@ -1,12 +1,18 @@
 package br.com.ufpr.dendrodata.ui.activity.projeto;
 
+import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,8 +20,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
+
 import br.com.ufpr.dendrodata.R;
+import br.com.ufpr.dendrodata.database.DendroDataDatabase;
+import br.com.ufpr.dendrodata.database.csv.CSVWriter;
+import br.com.ufpr.dendrodata.database.dao.IndividuoDAO;
+import br.com.ufpr.dendrodata.model.Individuo;
 import br.com.ufpr.dendrodata.model.Projeto;
+import br.com.ufpr.dendrodata.ui.activity.projeto.adapter.ListaProjetosAdapter;
 import br.com.ufpr.dendrodata.ui.activity.projeto.view.ListaProjetosView;
 
 import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_LISTAPROJETOS;
@@ -23,7 +39,8 @@ import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities
 public class ListaProjetosActivity extends AppCompatActivity {
 
     private ListaProjetosView listaProjetosView;
-//    private ListaProjetosAdapter adapter;
+    public static final int STORAGE_PERMISSION_REQUEST_CODE = 974;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,6 +81,16 @@ public class ListaProjetosActivity extends AppCompatActivity {
         startActivity(new Intent(this, FormularioProjetoActivity.class));
     }
 
+    public boolean willAskForPermission() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return false;
+        }
+        if (this.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
+            return false;
+        requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION_REQUEST_CODE);
+        return true;
+    }
+
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -73,17 +100,24 @@ public class ListaProjetosActivity extends AppCompatActivity {
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
+        AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch (item.getItemId()) {
-            case R.id.activity_listaprojetos_menu_remover:
-                listaProjetosView.confirmaRemocao(item);
-                break;
             case R.id.activity_listaprojetos_menu_editar:
-                AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
                 listaProjetosView.carrega(menuInfo.position);
+                break;
+            case R.id.activity_listaprojetos_menu_exportar:
+                willAskForPermission();
+                listaProjetosView.exporta(menuInfo.position);
+//                new ExportDatabaseCSVTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                break;
+            case R.id.activity_listaprojetos_menu_remover:
+                listaProjetosView.confirmaRemocao(menuInfo.position);
                 break;
             default:
                 super.onContextItemSelected(item);
         }
         return true;
     }
+
+
 }

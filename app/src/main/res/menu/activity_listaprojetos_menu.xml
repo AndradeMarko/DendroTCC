@@ -6,6 +6,10 @@
         android:title="@string/editar" />
 
     <item
+        android:id="@+id/activity_listaprojetos_menu_exportar"
+        android:title="@string/exportar" />
+
+    <item
         android:id="@+id/activity_listaprojetos_menu_remover"
         android:title="@string/remover" />
 

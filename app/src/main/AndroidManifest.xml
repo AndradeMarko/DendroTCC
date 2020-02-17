@@ -22,7 +22,7 @@
         <activity android:name=".ui.activity.projeto.ListaProjetosActivity" />
         <activity android:name=".ui.activity.projeto.FormularioProjetoActivity" />
         <activity android:name=".ui.activity.main.SobreActivity" />
-        <activity android:name=".ui.activity.main.ExportarActivity" />
+        <activity android:name=".database.csv.ExportarActivity" />
         <activity
             android:name=".ui.activity.main.splash.SplashUFPRActivity"
             android:theme="@style/AppCompat.TelaCheia">

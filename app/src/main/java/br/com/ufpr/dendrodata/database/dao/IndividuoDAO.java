@@ -24,4 +24,7 @@ public interface IndividuoDAO {
 
     @Update
     void edita(Individuo individuo);
+
+    @Query("SELECT * FROM Individuo")
+    List<Individuo> todosIndividuos();
 }
