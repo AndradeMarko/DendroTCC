@@ -10,12 +10,19 @@
     <string name="sobre_texto">Trabalho de Conclusão de Curso apresentada ao curso de MBA em Manejo Florestal de Precisão, do Programa de Educação Continuada em Ciências Agrárias, Universidade Federal do Paraná, como requisito parcial à obtenção do título de Especialista em Manejo Florestal de Precisão.</string>
     <string name="orientador">Orientador: Prof. Dr. Jaime Wojciechowski</string>
     <string name="coorientador">Coorientador: Prof. Dr. Razer Anthom N. R. Montaño</string>
+    <string name="exportar">Exportar</string>
+    <string name="inicio_projetos">PROJETOS</string>
+    <string name="inicio_sobre">SOBRE</string>
+    <string name="amostras_executadas">Amostras executadas</string>
+    <string name="banner_card">Foto de Plantio</string>
+    <string name="spinner_prompt">Choose an item</string>
+    <string name="simple_header">Simple Spinner</string>
+    <string name="dynamic_list_header">Dynamic list Spinner</string>
+    <string name="selection_header">Selection Spinner</string>
     <string-array name="especies_array">
         <item>Eucalyptus spp</item>
         <item>Pinus spp</item>
         <item>Teca spp</item>
         <item>Outro</item>
     </string-array>
-    <string name="spinnertitle">Espécie</string>
-    <string name="exportar">Exportar</string>
 </resources>

@@ -19,9 +19,9 @@ import br.com.ufpr.dendrodata.model.Amostra;
 import br.com.ufpr.dendrodata.model.Projeto;
 import br.com.ufpr.dendrodata.ui.activity.amostra.view.ListaAmostrasView;
 
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_AMOSTRA;
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_PROJETO;
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_LISTAAMOSTRAS;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.KEY_AMOSTRA;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.KEY_PROJETO;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.TITLE_APPBAR_LISTAAMOSTRAS;
 
 public class ListaAmostrasActivity extends AppCompatActivity {
 

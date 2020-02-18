@@ -14,7 +14,7 @@ import br.com.ufpr.dendrodata.ui.activity.amostra.FormularioAmostraActivity;
 import br.com.ufpr.dendrodata.ui.activity.amostra.adapter.ListaAmostrasAdapter;
 import br.com.ufpr.dendrodata.ui.activity.individuo.ListaIndividuosActivity;
 
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_AMOSTRA;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.KEY_AMOSTRA;
 
 public class ListaAmostrasView {
 

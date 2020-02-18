@@ -30,7 +30,7 @@
             android:layout_marginTop="16dp"
             android:hint="Código do Projeto"
             android:importantForAutofill="no"
-            android:inputType="textCapWords"
+            android:inputType="textCapCharacters"
             app:layout_constraintEnd_toEndOf="@+id/activity_formularioprojeto_text_dadosprojetos"
             app:layout_constraintStart_toStartOf="@+id/activity_formularioprojeto_text_dadosprojetos"
             app:layout_constraintTop_toBottomOf="@id/activity_formularioprojeto_text_dadosprojetos"
@@ -66,15 +66,19 @@
             app:layout_constraintStart_toStartOf="@+id/activity_formularioprojeto_fazenda"
             app:layout_constraintTop_toBottomOf="@+id/activity_formularioprojeto_fazenda" />
 
-        <EditText
-            android:id="@+id/activity_formularioprojeto_especie"
+
+        <Spinner
+            android:id="@+id/activity_spinner_projeto_especie"
             android:layout_width="150dp"
             android:layout_height="45dp"
             android:layout_marginTop="16dp"
-            android:hint="Espécie"
-            android:inputType="textCapWords"
+            android:entries="@array/especies_array"
+            android:prompt="@string/spinner_prompt"
             app:layout_constraintEnd_toEndOf="@+id/activity_formularioprojeto_municipio"
-            app:layout_constraintTop_toBottomOf="@+id/activity_formularioprojeto_municipio" />
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/activity_formularioprojeto_area"
+            app:layout_constraintTop_toBottomOf="@+id/activity_formularioprojeto_municipio"
+            tools:listitem="@android:layout/simple_spinner_item" />
 
         <TextView
             android:id="@+id/activity_formularioprojeto_text_unidadesamostrais"

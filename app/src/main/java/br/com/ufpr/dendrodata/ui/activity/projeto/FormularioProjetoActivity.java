@@ -4,7 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,17 +18,17 @@ import br.com.ufpr.dendrodata.database.DendroDataDatabase;
 import br.com.ufpr.dendrodata.database.dao.ProjetoDAO;
 import br.com.ufpr.dendrodata.model.Projeto;
 
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_PROJETO;
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_EDITAPROJETO;
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_NOVOPROJETO;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.KEY_PROJETO;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.TITLE_APPBAR_EDITAPROJETO;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.TITLE_APPBAR_NOVOPROJETO;
 
-public class FormularioProjetoActivity extends AppCompatActivity {
+public class FormularioProjetoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private EditText campoCodigo;
     private EditText campoFazenda;
     private EditText campoMunicipio;
     private EditText campoArea;
-    private EditText campoEspecie;
+    private Spinner campoEspecie;
     private EditText campoTamanho;
     private EditText campoQuantidade;
     private EditText campoDescricao;
@@ -85,7 +89,7 @@ public class FormularioProjetoActivity extends AppCompatActivity {
         campoCodigo.setText(projeto.getCodigo());
         campoFazenda.setText(projeto.getFazenda());
         campoMunicipio.setText(projeto.getMunicipio());
-        campoEspecie.setText(projeto.getEspecie());
+//        campoEspecie.setSelected(projeto.getEspecie());
         campoArea.setText(projeto.getArea());
         campoTamanho.setText(projeto.getTamanho());
         campoQuantidade.setText(projeto.getQuantidade());
@@ -106,7 +110,8 @@ public class FormularioProjetoActivity extends AppCompatActivity {
         campoCodigo = findViewById(R.id.activity_formularioprojeto_codigo);
         campoFazenda = findViewById(R.id.activity_formularioprojeto_fazenda);
         campoMunicipio = findViewById(R.id.activity_formularioprojeto_municipio);
-        campoEspecie = findViewById(R.id.activity_formularioprojeto_especie);
+        campoEspecie = findViewById(R.id.activity_spinner_projeto_especie);
+        campoEspecie.setOnItemSelectedListener(this);
         campoArea = findViewById(R.id.activity_formularioprojeto_area);
         campoTamanho = findViewById(R.id.activity_formularioprojeto_tamanho_amostra);
         campoQuantidade = findViewById(R.id.activity_formularioprojeto_quantidade_amostras);
@@ -118,7 +123,7 @@ public class FormularioProjetoActivity extends AppCompatActivity {
         String codigo = campoCodigo.getText().toString();
         String fazenda = campoFazenda.getText().toString();
         String municipio = campoMunicipio.getText().toString();
-        String especie = campoEspecie.getText().toString();
+        String especie = campoEspecie.getSelectedItem().toString();
         String area = campoArea.getText().toString();
         String tamanho = campoTamanho.getText().toString();
         String quantidade = campoQuantidade.getText().toString();
@@ -136,4 +141,12 @@ public class FormularioProjetoActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }

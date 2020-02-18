@@ -1,4 +1,4 @@
-package br.com.ufpr.dendrodata.ui.activity.constantes;
+package br.com.ufpr.dendrodata.ui.activity.const_n_masks;
 
 public interface ConstantesActivities {
 

@@ -32,7 +32,8 @@
             android:drawablePadding="8dp"
             android:hint="Número da Amostra"
             android:importantForAutofill="no"
-            android:inputType="textCapWords"
+            android:inputType="number"
+            android:maxLength="3"
             app:layout_constraintEnd_toEndOf="@+id/activity_formularioamostra_text_dadosamostra"
             app:layout_constraintStart_toStartOf="@+id/activity_formularioamostra_text_dadosamostra"
             app:layout_constraintTop_toBottomOf="@id/activity_formularioamostra_text_dadosamostra"
@@ -46,7 +47,9 @@
             android:drawableStart="@drawable/ic_action_coordenada"
             android:drawablePadding="8dp"
             android:hint="Coordenada X"
-            android:inputType="textCapWords"
+            android:maxLength="7"
+            android:inputType="number"
+            android:digits="0123456789 -."
             app:layout_constraintStart_toStartOf="@+id/activity_formularioamostra_numero"
             app:layout_constraintTop_toBottomOf="@+id/activity_formularioamostra_numero" />
 
@@ -58,7 +61,9 @@
             android:drawableStart="@drawable/ic_action_coordenada"
             android:drawablePadding="8dp"
             android:hint="Coordenada Y"
-            android:inputType="textCapWords"
+            android:inputType="number"
+            android:digits="0123456789 -."
+            android:maxLength="9"
             app:layout_constraintEnd_toEndOf="@+id/activity_formularioamostra_numero"
             app:layout_constraintTop_toBottomOf="@+id/activity_formularioamostra_numero" />
 
@@ -70,7 +75,9 @@
             android:drawableStart="@drawable/ic_action_espacamento"
             android:drawablePadding="8dp"
             android:hint="Espaçamento"
-            android:inputType="numberDecimal"
+            android:digits="0123456789 .-x"
+            android:inputType="number"
+            android:maxLength="9"
             app:layout_constraintEnd_toEndOf="@+id/activity_formularioamostra_coordy"
             app:layout_constraintStart_toStartOf="@+id/activity_formularioamostra_coordx"
             app:layout_constraintTop_toBottomOf="@+id/activity_formularioamostra_coordx" />

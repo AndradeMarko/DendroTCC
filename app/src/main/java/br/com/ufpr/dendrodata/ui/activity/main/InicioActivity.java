@@ -1,13 +1,12 @@
 package br.com.ufpr.dendrodata.ui.activity.main;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import br.com.ufpr.dendrodata.R;
-import br.com.ufpr.dendrodata.database.csv.ExportarActivity;
 import br.com.ufpr.dendrodata.ui.activity.projeto.ListaProjetosActivity;
 
 public class InicioActivity extends AppCompatActivity {
@@ -17,8 +16,8 @@ public class InicioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
         configuraBotaoProjetos();
-        configuraBotaoExportar();
         configuraBotaoSobre();
+//        configuraBotaoExportar();
     }
 
 
@@ -32,13 +31,9 @@ public class InicioActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void configuraBotaoExportar() {
-        Button botaoExportar = findViewById(R.id.inicio_botao_exportar);
-        botaoExportar.setOnClickListener(v -> vaiParaExportar());
-    }
 
-    private void vaiParaExportar() {
-        Intent intent = new Intent(InicioActivity.this, ExportarActivity.class);
+    private void vaiParaSobre() {
+        Intent intent = new Intent(InicioActivity.this, SobreActivity.class);
         startActivity(intent);
     }
 
@@ -47,13 +42,14 @@ public class InicioActivity extends AppCompatActivity {
         botaoSobre.setOnClickListener(v -> vaiParaSobre());
     }
 
-    private void vaiParaSobre() {
-        Intent intent = new Intent(InicioActivity.this, SobreActivity.class);
-        startActivity(intent);
-    }
-
-
-
-
+    //    private void configuraBotaoExportar() {
+//        Button botaoExportar = findViewById(R.id.inicio_botao_exportar);
+//        botaoExportar.setOnClickListener(v -> vaiParaExportar());
+//    }
+//
+//    private void vaiParaExportar() {
+//        Intent intent = new Intent(InicioActivity.this, ExportarActivity.class);
+//        startActivity(intent);
+//    }
 
 }

@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -24,7 +23,7 @@ import br.com.ufpr.dendrodata.database.DendroDataDatabase;
 import br.com.ufpr.dendrodata.database.dao.IndividuoDAO;
 import br.com.ufpr.dendrodata.model.Individuo;
 
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_EXPORTAR;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.TITLE_APPBAR_EXPORTAR;
 
 public class ExportarActivity extends AppCompatActivity {
 

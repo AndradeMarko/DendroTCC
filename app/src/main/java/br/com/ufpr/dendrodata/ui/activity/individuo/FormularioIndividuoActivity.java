@@ -14,9 +14,9 @@ import br.com.ufpr.dendrodata.database.DendroDataDatabase;
 import br.com.ufpr.dendrodata.database.dao.IndividuoDAO;
 import br.com.ufpr.dendrodata.model.Individuo;
 
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_INDIVIDUO;
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_EDITAINDIVIDUO;
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_NOVOINDIVIDUO;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.KEY_INDIVIDUO;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.TITLE_APPBAR_EDITAINDIVIDUO;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.TITLE_APPBAR_NOVOINDIVIDUO;
 
 public class FormularioIndividuoActivity extends AppCompatActivity {
 

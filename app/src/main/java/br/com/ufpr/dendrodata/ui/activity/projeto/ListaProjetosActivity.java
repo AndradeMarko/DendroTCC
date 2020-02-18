@@ -21,7 +21,7 @@ import br.com.ufpr.dendrodata.R;
 import br.com.ufpr.dendrodata.model.Projeto;
 import br.com.ufpr.dendrodata.ui.activity.projeto.view.ListaProjetosView;
 
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_LISTAPROJETOS;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.TITLE_APPBAR_LISTAPROJETOS;
 
 public class ListaProjetosActivity extends AppCompatActivity {
 
@@ -37,7 +37,6 @@ public class ListaProjetosActivity extends AppCompatActivity {
         listaProjetosView = new ListaProjetosView(this);
         configuraFABNovo();
         configuraLista();
-
         backButton();
     }
 
@@ -55,7 +54,6 @@ public class ListaProjetosActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
         listaProjetosView.atualizaProjetos();
     }
 
@@ -118,6 +116,4 @@ public class ListaProjetosActivity extends AppCompatActivity {
         }
         return true;
     }
-
-
 }

@@ -18,9 +18,9 @@ import br.com.ufpr.dendrodata.model.Amostra;
 import br.com.ufpr.dendrodata.model.Individuo;
 import br.com.ufpr.dendrodata.ui.activity.individuo.view.ListaIndividuosView;
 
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_AMOSTRA;
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_INDIVIDUO;
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_LISTAINDIVIDUOS;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.KEY_AMOSTRA;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.KEY_INDIVIDUO;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.TITLE_APPBAR_LISTAINDIVIDUOS;
 
 public class ListaIndividuosActivity extends AppCompatActivity {
 

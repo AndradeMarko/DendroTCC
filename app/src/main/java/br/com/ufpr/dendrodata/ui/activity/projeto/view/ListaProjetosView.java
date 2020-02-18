@@ -25,7 +25,7 @@ import br.com.ufpr.dendrodata.ui.activity.amostra.ListaAmostrasActivity;
 import br.com.ufpr.dendrodata.ui.activity.projeto.FormularioProjetoActivity;
 import br.com.ufpr.dendrodata.ui.activity.projeto.adapter.ListaProjetosAdapter;
 
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_PROJETO;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.KEY_PROJETO;
 
 public class ListaProjetosView {
 

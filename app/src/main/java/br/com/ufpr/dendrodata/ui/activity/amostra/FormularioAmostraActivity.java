@@ -13,10 +13,11 @@ import br.com.ufpr.dendrodata.R;
 import br.com.ufpr.dendrodata.database.DendroDataDatabase;
 import br.com.ufpr.dendrodata.database.dao.AmostraDAO;
 import br.com.ufpr.dendrodata.model.Amostra;
+import br.com.ufpr.dendrodata.ui.activity.const_n_masks.MasksEdit;
 
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_AMOSTRA;
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_EDITAAMOSTRA;
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.TITLE_APPBAR_NOVAAMOSTRA;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.KEY_AMOSTRA;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.TITLE_APPBAR_EDITAAMOSTRA;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.TITLE_APPBAR_NOVAAMOSTRA;
 
 public class FormularioAmostraActivity extends AppCompatActivity {
 
@@ -117,8 +118,11 @@ public class FormularioAmostraActivity extends AppCompatActivity {
     private void inicializacaoCampos() {
         campoNumero = findViewById(R.id.activity_formularioamostra_numero);
         campoCoordX = findViewById(R.id.activity_formularioamostra_coordx);
+        campoCoordX.addTextChangedListener(new MasksEdit("###.###"));
         campoCoordY = findViewById(R.id.activity_formularioamostra_coordy);
+        campoCoordY.addTextChangedListener(new MasksEdit("#.###.###"));
         campoEspacamento = findViewById(R.id.activity_formularioamostra_espacamento);
+        campoEspacamento.addTextChangedListener(new MasksEdit("#.# x #.#"));
         campoObservacao = findViewById(R.id.activity_formularioamostra_observacoes);
     }
 }

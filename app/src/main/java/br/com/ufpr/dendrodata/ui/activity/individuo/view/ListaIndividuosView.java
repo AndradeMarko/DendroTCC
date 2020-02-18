@@ -13,7 +13,7 @@ import br.com.ufpr.dendrodata.model.Individuo;
 import br.com.ufpr.dendrodata.ui.activity.individuo.FormularioIndividuoActivity;
 import br.com.ufpr.dendrodata.ui.activity.individuo.adapter.ListaIndividuosAdapter;
 
-import static br.com.ufpr.dendrodata.ui.activity.constantes.ConstantesActivities.KEY_INDIVIDUO;
+import static br.com.ufpr.dendrodata.ui.activity.const_n_masks.ConstantesActivities.KEY_INDIVIDUO;
 
 public class ListaIndividuosView {
 
